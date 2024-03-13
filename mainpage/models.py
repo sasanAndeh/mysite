@@ -4,6 +4,12 @@ class social_media_links(models.Model):
     """Model definition for social_media_links."""
 
     # TODO: Define fields here
+    instagram       = models.CharField("Instagram Link", max_length=50)
+    twitter         = models.CharField("twitter Link", max_length=50)
+    telegram        = models.CharField("telegram Link", max_length=50)
+    linkedin        = models.CharField("linkedin Link", max_length=50)
+    facebook        = models.CharField("facebook Link", max_length=50)
+    
 
     class Meta:
         """Meta definition for social_media_links."""
@@ -14,18 +20,6 @@ class social_media_links(models.Model):
     def __str__(self):
         """Unicode representation of social_media_links."""
         pass
-
-    def save(self):
-        """Save method for social_media_links."""
-        pass
-
-    def get_absolute_url(self):
-        """Return absolute url for social_media_links."""
-        return ('')
-
-    # TODO: Define custom methods here
-
-
 class personal_details(models.Model):
     f_name              = models.CharField("First name", max_length=50)
     l_name              = models.CharField("Last name",max_length=50)
@@ -39,7 +33,8 @@ class personal_details(models.Model):
     website             = models.URLField("your website", max_length=200)
     about_me            = models.TextField()
     image_profile       = models.ImageField("profile", upload_to=None, height_field=None, width_field=None, max_length=None)  
-    
+    social_links        = models.OneToOneField(social_media_links, verbose_name="social links", on_delete=models.CASCADE)
+
     def __str__(self):
         pass
 
